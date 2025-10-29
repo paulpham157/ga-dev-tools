@@ -22,6 +22,10 @@ import { GAVersion } from "../../constants"
 
 // Capture original error global so it's easier to replace after a mock.
 const originalError = console.error
+
+// Increase the timeout for this test suite. The userEvent.type calls can
+// be slow, and the default 5s timeout is not always enough.
+jest.setTimeout(10000)
 describe("for the Campaign URL Builder component", () => {
   beforeEach(() => {
     process.env.BITLY_CLIENT_ID = "bitly-client-id"
